@@ -1,17 +1,17 @@
-import React, { useState, Fragment } from 'react'
-import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
-import UserTable from './tables/UserTable'
+import React, { useState, Fragment } from "react"
+import AddUserForm from "./forms/AddUserForm"
+import EditUserForm from "./forms/EditUserForm"
+import UserTable from "./tables/UserTable"
 
 const App = () => {
 	// Data
 	const usersData = [
-		{ id: 1, name: 'Tania', username: 'floppydiskette' },
-		{ id: 2, name: 'Craig', username: 'siliconeidolon' },
-		{ id: 3, name: 'Ben', username: 'benisphere' },
+		{ id: 1, name: "Aaron", username: "a-a-ron", spirit_animal: "lion" },
+		{ id: 2, name: "Craig", username: "siliconeidolon", spirit_animal: "dog" },
+		{ id: 3, name: "Ben", username: "benisphere", spirit_animal: "cat" },
 	]
 
-	const initialFormState = { id: null, name: '', username: '' }
+	const initialFormState = { id: null, name: "", username: "", spirit_animal: "" }
 
 	// Setting state
 	const [ users, setUsers ] = useState(usersData)
@@ -26,20 +26,21 @@ const App = () => {
 
 	const deleteUser = id => {
 		setEditing(false)
-
 		setUsers(users.filter(user => user.id !== id))
 	}
 
 	const updateUser = (id, updatedUser) => {
 		setEditing(false)
-
 		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
 	}
 
 	const editRow = user => {
 		setEditing(true)
+		setCurrentUser({ id: user.id, name: user.name, username: user.username, spirit_animal: user.spirit_animal })
+	}
 
-		setCurrentUser({ id: user.id, name: user.name, username: user.username })
+	const deleteAllUsers = () => {
+
 	}
 
 	return (
@@ -64,9 +65,20 @@ const App = () => {
 						</Fragment>
 					)}
 				</div>
+
 				<div className="flex-large">
 					<h2>View users</h2>
-					<UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
+					<UserTable
+						users={users}
+						editRow={editRow}
+						deleteUser={deleteUser}
+					/>
+
+					<button
+							className="button muted-button"
+							onClick={deleteAllUsers}>
+						{'Delete All Users'}
+					</button>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 const AddUserForm = props => {
-	const initialFormState = { id: null, name: '', username: '' }
+	const initialFormState = { id: null, name: "", username: "", spirit_animal: "" }
 	const [ user, setUser ] = useState(initialFormState)
 
 	const handleInputChange = event => {
@@ -12,7 +12,7 @@ const AddUserForm = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		if (!user.name || !user.username)
+		if (!user.name || !user.username || !user.spirit_animal)
 			return
 			props.addUser(user)
 			setUser(initialFormState)
@@ -35,7 +35,16 @@ const AddUserForm = props => {
 				type="text"
 				name="username"
 				value={user.username}
-				onChange={handleInputChange} />
+				onChange={handleInputChange}
+			/>
+
+			<label>Spirit Animal</label>
+				<input
+					type="text"
+					name="spirit-animal"
+					value={user.spirit_animal}
+					onChange={handleInputChange}
+				/>
 			<button>Add new user</button>
 		</form>
 	)
