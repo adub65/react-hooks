@@ -6,12 +6,12 @@ import UserTable from "./tables/UserTable"
 const App = () => {
 	// Data
 	const usersData = [
-		{ id: 1, name: "Aaron", username: "a-a-ron", spirit_animal: "lion" },
-		{ id: 2, name: "Craig", username: "siliconeidolon", spirit_animal: "dog" },
-		{ id: 3, name: "Ben", username: "benisphere", spirit_animal: "cat" },
+		{ id: 1, name: "Aaron", username: "a-a-ron", spiritAnimal: "lion" },
+		{ id: 2, name: "Craig", username: "siliconeidolon", spiritAnimal: "dog" },
+		{ id: 3, name: "Ben", username: "benisphere", spiritAnimal: "cat" },
 	]
 
-	const initialFormState = { id: null, name: "", username: "", spirit_animal: "" }
+	const initialFormState = { id: null, name: "", username: "", spiritAnimal: "" }
 
 	// Setting state
 	const [ users, setUsers ] = useState(usersData)
@@ -36,11 +36,12 @@ const App = () => {
 
 	const editRow = user => {
 		setEditing(true)
-		setCurrentUser({ id: user.id, name: user.name, username: user.username, spirit_animal: user.spirit_animal })
+		setCurrentUser({ ...user })
 	}
 
 	const deleteAllUsers = () => {
-
+		setEditing(false)
+		setUsers([])
 	}
 
 	return (
@@ -52,7 +53,6 @@ const App = () => {
 						<Fragment>
 							<h2>Edit user</h2>
 							<EditUserForm
-								editing={editing}
 								setEditing={setEditing}
 								currentUser={currentUser}
 								updateUser={updateUser}
@@ -76,8 +76,8 @@ const App = () => {
 
 					<button
 							className="button muted-button"
-							onClick={deleteAllUsers}>
-						{'Delete All Users'}
+							onClick={deleteAllUsers}
+							>Delete All Users
 					</button>
 				</div>
 			</div>

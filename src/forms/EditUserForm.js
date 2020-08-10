@@ -13,7 +13,6 @@ const EditUserForm = props => {
 
   const handleInputChange = event => {
     const { name, value } = event.target
-
     setUser({ ...user, [name]: value })
   }
 
@@ -45,7 +44,7 @@ const EditUserForm = props => {
       <input
         type="text"
         name="spirit-animal"
-        value={user.spirit_animal}
+        value={user.spiritAnimal}
         onChange={handleInputChange}
       />
 

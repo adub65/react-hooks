@@ -1,19 +1,17 @@
 import React, { useState } from "react"
 
 const AddUserForm = props => {
-	const initialFormState = { id: null, name: "", username: "", spirit_animal: "" }
+	const initialFormState = { id: null, name: "", username: "", spiritAnimal: "" }
 	const [ user, setUser ] = useState(initialFormState)
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
-
 		setUser({ ...user, [name]: value })
 	}
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		if (!user.name || !user.username || !user.spirit_animal)
-			return
+		if (!user.name || !user.username || !user.spiritAnimal) return
 			props.addUser(user)
 			setUser(initialFormState)
 	}
@@ -41,8 +39,8 @@ const AddUserForm = props => {
 			<label>Spirit Animal</label>
 				<input
 					type="text"
-					name="spirit-animal"
-					value={user.spirit_animal}
+					name="spiritAnimal"
+					value={user.spiritAnimal}
 					onChange={handleInputChange}
 				/>
 			<button>Add new user</button>
