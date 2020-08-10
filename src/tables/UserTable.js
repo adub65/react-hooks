@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserTable = (props) => (
+const UserTable = props => (
   <table>
     <thead>
       <tr>
@@ -11,16 +11,24 @@ const UserTable = (props) => (
     </thead>
     <tbody>
       {props.users.length > 0 ? (
-        props.users.map((user) => (
+        props.users.map(user => (
           <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.username}</td>
             <td>
-              <button className="button muted-button">Edit</button>
+              <button
+                onClick={() => {
+                  props.editRow(user)
+                }}
+                className="button muted-button"
+              >
+                Edit
+              </button>
               <button
                 onClick={() => props.deleteUser(user.id)}
                 className="button muted-button"
-                >Delete
+              >
+                Delete
               </button>
             </td>
           </tr>
