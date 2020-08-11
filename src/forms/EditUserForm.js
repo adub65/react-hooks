@@ -40,13 +40,20 @@ const EditUserForm = props => {
         onChange={handleInputChange}
       />
 
-      <label>Spirit Animal</label>
-      <input
-        type="text"
-        name="spirit-animal"
-        value={user.spiritAnimal}
-        onChange={handleInputChange}
-      />
+<label>Spirit Animal</label>
+				<select
+					name="spiritAnimal"
+					value={user.spiritAnimal}
+					onChange={handleInputChange}
+				>
+					<option value="">Select Your Spirit Animal</option>
+					<option value="lion">Lion</option>
+					<option value="wolf">Wolf</option>
+					<option value="bull">Bull</option>
+					<option value="sheep">Sheep</option>
+					<option value="hippopotamus">Hippopotamus</option>
+					<option value="eagle">Eagle</option>
+				</select>
 
       <button>Update user</button>
       <button onClick={() => props.setEditing(false)} className="button muted-button">

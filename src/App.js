@@ -5,11 +5,7 @@ import UserTable from "./tables/UserTable"
 
 const App = () => {
 	// Data
-	const usersData = [
-		{ id: 1, name: "Aaron", username: "a-a-ron", spiritAnimal: "lion" },
-		{ id: 2, name: "Craig", username: "siliconeidolon", spiritAnimal: "dog" },
-		{ id: 3, name: "Ben", username: "benisphere", spiritAnimal: "cat" },
-	]
+	const usersData = []
 
 	const initialFormState = { id: null, name: "", username: "", spiritAnimal: "" }
 
